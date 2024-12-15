@@ -4,6 +4,7 @@ const friendRoutes = require('./routes/friendRoutes');
 const bodyparser = require('body-parser');
 const dotenv = require('dotenv').config();
 const authRoutes = require('./routes/authRoutes');
+const morgan = require('morgan');
 
 // Load environment variables from .env file
 if (dotenv.error) {
@@ -17,6 +18,7 @@ const app = express();
 
 // middleware
 app.use(bodyparser.json());
+app.use(morgan('dev'));
 
 // routes
 app.use('/api/friends', friendRoutes);
